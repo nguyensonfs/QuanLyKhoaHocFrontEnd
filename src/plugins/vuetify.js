@@ -5,9 +5,20 @@ import "vuetify/styles";
 // Composables
 import { createVuetify } from "vuetify";
 
+const myCustomLightTheme = {
+  dark: false,
+  colors: {
+    primary: "#04A6E1",
+  },
+  variables: {},
+};
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
-    defaultTheme: "light",
+    defaultTheme: "myCustomLightTheme",
+    themes: {
+      myCustomLightTheme,
+    },
   },
 });
