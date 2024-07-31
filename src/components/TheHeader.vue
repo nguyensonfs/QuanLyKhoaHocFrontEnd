@@ -3,13 +3,14 @@
     <v-row align="center">
       <v-col cols="auto" class="pa-0 ml-4">
         <v-btn
+          v-if="isLogin"
           color="primary"
           variant="plain"
           density="compact"
           icon="mdi-menu"
         ></v-btn>
       </v-col>
-      <v-col cols="auto" class="pa-0 ml-4">
+      <v-col cols="auto" :class="customClass">
         <v-img
           :width="60"
           :height="60"
@@ -22,7 +23,7 @@
         >
       </v-col>
       <v-col></v-col>
-      <v-col cols="auto">
+      <v-col v-if="isLogin" cols="auto">
         <v-row align="center" class="mr-4">
           <v-col class="pa-0 mr-2"
             ><v-avatar class="custom-color" size="34px">
@@ -48,7 +49,18 @@
   </v-app-bar>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isLogin: false,
+    };
+  },
+  computed: {
+    customClass() {
+      return this.isLogin ? "pa-0 ml-4" : "pa-0 ml-120";
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .font-headlandOne {
@@ -57,5 +69,9 @@ export default {};
 
 .custom-color {
   background: #c4c4c4;
+}
+
+.ml-120 {
+  margin-left: 120px !important;
 }
 </style>
