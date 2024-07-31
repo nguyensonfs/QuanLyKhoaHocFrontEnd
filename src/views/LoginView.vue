@@ -1,13 +1,14 @@
 <template>
   <v-main>
     <TheHeader />
-    <h1>login</h1>
+    <LoginComponent />
   </v-main>
 </template>
 <script>
 import TheHeader from "@/components/TheHeader.vue";
+import LoginComponent from "@/components/auth/LoginComponent.vue";
 
 export default {
-  components: { TheHeader },
+  components: { TheHeader, LoginComponent },
 };
 </script>
