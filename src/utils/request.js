@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_ROOT_API;
+
 const request = axios.create({
-  baseURL: "https://localhost:7161/api/v1/",
+  baseURL: apiUrl,
 });
 
 export const get = async (path, options = {}) => {
