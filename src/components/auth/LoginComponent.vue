@@ -18,7 +18,7 @@
       <v-col class="d-flex" justify="center" cols="auto">
         <v-card variant="outlined" class="pa-5" width="348">
           <v-card-text>
-            <v-form v-model="valid" ref="form">
+            <v-form v-model="valid" @submit.prevent="login">
               <v-text-field
                 v-model="username"
                 :rules="[rules.required]"
@@ -37,7 +37,9 @@
                 class="mb-4"
                 append-inner-icon="mdi-eye-off"
               ></v-text-field>
-              <v-btn :disabled="!valid" block color="primary">Đăng nhập</v-btn>
+              <v-btn :disabled="!valid" @click="login()" block color="primary"
+                >Đăng nhập</v-btn
+              >
             </v-form>
           </v-card-text>
         </v-card>
@@ -58,7 +60,15 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    login() {
+      console.log("Login component");
+      this.$store.dispatch("AUTH/login", {
+        username: this.username,
+        password: this.password,
+      });
+    },
+  },
 };
 </script>
 

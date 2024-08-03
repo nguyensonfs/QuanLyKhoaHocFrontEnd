@@ -1,3 +1,8 @@
 <template>
-  <h1>Articles</h1>
+  <v-card> </v-card>
 </template>
+<script>
+export default {
+  components: {},
+};
+</script>

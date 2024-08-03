@@ -9,6 +9,7 @@ const myCustomLightTheme = {
   dark: false,
   colors: {
     primary: "#04A6E1",
+    "grey-lighten-2": "#626262",
   },
   variables: {},
 };
