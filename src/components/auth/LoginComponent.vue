@@ -20,7 +20,7 @@
           <v-card-text>
             <v-form v-model="valid" @submit.prevent="login">
               <v-text-field
-                v-model="username"
+                v-model="tenDangNhap"
                 :rules="[rules.required]"
                 label="Tên đăng nhập"
                 required
@@ -28,7 +28,7 @@
                 class="mb-4"
               ></v-text-field>
               <v-text-field
-                v-model="password"
+                v-model="matKhau"
                 :rules="[rules.required]"
                 label="Mật khẩu"
                 type="password"
@@ -37,7 +37,7 @@
                 class="mb-4"
                 append-inner-icon="mdi-eye-off"
               ></v-text-field>
-              <v-btn :disabled="!valid" @click="login()" block color="primary"
+              <v-btn :disabled="!valid" @click="login" block color="primary"
                 >Đăng nhập</v-btn
               >
             </v-form>
@@ -49,24 +49,31 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       valid: false,
-      username: "",
-      password: "",
+      tenDangNhap: "",
+      matKhau: "",
       rules: {
         required: (value) => !!value || "Trường này là bắt buộc",
       },
     };
   },
   methods: {
-    login() {
-      console.log("Login component");
-      this.$store.dispatch("AUTH/login", {
-        username: this.username,
-        password: this.password,
-      });
+    ...mapActions(["login"]),
+    async login() {
+      try {
+        await this.login({
+          tenDangNhap: this.tenDangNhap,
+          matKhau: this.matKhau,
+        });
+        this.$emit("close");
+      } catch (error) {
+        console.error("Lỗi đăng nhập:", error);
+        // Xử lý lỗi đăng nhập (hiển thị thông báo, v.v.)
+      }
     },
   },
 };
