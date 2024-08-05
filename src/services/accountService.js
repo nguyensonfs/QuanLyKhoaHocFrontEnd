@@ -1,3 +1,4 @@
+// src/api/accounts.js
 import * as request from "@/utils/request";
 
 export const getAccounts = async () => {
@@ -17,7 +18,7 @@ export const postAccount = async (data) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    return res;
+    return res.data;
   } catch (error) {
     console.error("Error creating account:", error);
     throw error;
@@ -27,7 +28,7 @@ export const postAccount = async (data) => {
 export const putAccount = async (accountId, data) => {
   try {
     const res = await request.put(`accounts/${accountId}`, data);
-    return res;
+    return res.data;
   } catch (error) {
     console.error("Error updating account:", error);
     throw error;
@@ -37,7 +38,7 @@ export const putAccount = async (accountId, data) => {
 export const deleteAccount = async (accountId) => {
   try {
     const res = await request.del(`accounts/${accountId}`);
-    return res;
+    return res.data;
   } catch (error) {
     console.error("Error deleting account:", error);
     throw error;

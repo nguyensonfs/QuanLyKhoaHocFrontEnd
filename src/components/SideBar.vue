@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer :width="294">
+  <v-navigation-drawer :width="240">
     <v-list density="compact" nav>
       <v-list-item
         class="text-grey-lighten-2 text-h5"
@@ -29,7 +29,6 @@ export default {
       },
       { text: "Quản lý khoá học", name: "admin-courses", icon: "mdi-book" },
       { text: "Quản lý bài viết", name: "admin-articles", icon: "mdi-post" },
-      { text: "Quản lý chung", name: "admin-articles", icon: "mdi-corn" },
     ],
   }),
   methods: {
