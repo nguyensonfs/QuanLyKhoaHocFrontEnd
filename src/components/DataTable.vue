@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-data-table :headers="headers" :items="items" item-key="id">
-      <template v-slot:item.actions="{ item }">
+      <template v-slot:[`item.actions`]="{ item }">
         <v-icon small class="mr-2" @click="openDeleteDialog(item)"
           >mdi-delete</v-icon
         >

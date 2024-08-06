@@ -18,7 +18,7 @@
       <v-col class="d-flex" justify="center" cols="auto">
         <v-card variant="outlined" class="pa-5" width="348">
           <v-card-text>
-            <v-form v-model="valid" @submit.prevent="login">
+            <v-form v-model="valid" @submit.prevent="handleSubmit">
               <v-text-field
                 v-model="tenDangNhap"
                 :rules="[rules.required]"
@@ -37,9 +37,9 @@
                 class="mb-4"
                 append-inner-icon="mdi-eye-off"
               ></v-text-field>
-              <v-btn :disabled="!valid" @click="login" block color="primary"
-                >Đăng nhập</v-btn
-              >
+              <v-btn :disabled="!valid" type="submit" block color="primary">
+                Đăng nhập
+              </v-btn>
             </v-form>
           </v-card-text>
         </v-card>
@@ -61,21 +61,7 @@ export default {
       },
     };
   },
-  methods: {
-    ...mapActions(["login"]),
-    async login() {
-      try {
-        await this.login({
-          tenDangNhap: this.tenDangNhap,
-          matKhau: this.matKhau,
-        });
-        this.$emit("close");
-      } catch (error) {
-        console.error("Lỗi đăng nhập:", error);
-        // Xử lý lỗi đăng nhập (hiển thị thông báo, v.v.)
-      }
-    },
-  },
+  methods: {},
 };
 </script>
 

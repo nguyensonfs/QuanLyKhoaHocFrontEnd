@@ -41,9 +41,9 @@ const actions = {
   async deleteItem({ commit, state }) {
     try {
       const response = await studentService.deleteStudent(
-        state.itemToDelete.hocVienID
+        state.itemToDelete.id
       );
-      commit("REMOVE_ITEM", state.itemToDelete.hocVienID);
+      commit("REMOVE_ITEM", state.itemToDelete.id);
       commit("SET_DELETE_DIALOG", false);
       commit("SET_ITEM_TO_DELETE", null);
     } catch (error) {
